@@ -62,6 +62,12 @@ Add-AppxPackage -Path "$env:temp\Microsoft.UI.Xaml.2.8.x64.appx"
 Invoke-WebRequest -Uri 'https://github.com/microsoft/terminal/releases/download/v1.20.11271.0/Microsoft.WindowsTerminal_1.20.11271.0_8wekyb3d8bbwe.msixbundle' -OutFile "$env:temp\Microsoft.WindowsTerminal_1.20.msixbundle"
 Add-AppxPackage -Path "$env:temp\Microsoft.WindowsTerminal_1.20.msixbundle"
 ```
+Or:
+```shell
+./Install-DownloadablePackage.ps1 https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx
+./Install-DownloadablePackage.ps1 https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx
+./Install-DownloadablePackage.ps1 https://github.com/microsoft/terminal/releases/download/v1.20.11271.0/Microsoft.WindowsTerminal_1.20.11271.0_8wekyb3d8bbwe.msixbundle
+```
 
 ### Notepad
 
