@@ -23,6 +23,9 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 }
 ```
 
+#### Scripting hints and tips
+Examine [preference variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4) for useful things to improve scripts.
+
 ## Software setup
 ### Base packages
 #### XAML
@@ -43,3 +46,16 @@ Add-AppxPackage -Path "$env:temp\Microsoft.UI.Xaml.2.8.x64.appx" -ErrorAction Si
 * Requires [XAML](#xaml)
 
 ### Notepad
+
+# Resources
+* [Installing Windows Store](https://bonguides.com/how-to-install-apps-in-microsoft-store-in-windows-sandbox/)
+  * [Main PowerShell script](https://raw.githubusercontent.com/bonguides25/PowerShell/main/WindowsSandbox/sandbox-store.ps1)
+  * [XAML script](https://raw.githubusercontent.com/bonguides25/PowerShell/main/Utilities/microsoft.ui.xaml.ps1)
+* [Clink](https://chrisant996.github.io/clink/clink.html)  
+  * [github](https://github.com/chrisant996/clink)
+* [Oh-My-Posh](https://ohmyposh.dev/)
+  * [Installation on Windows](https://ohmyposh.dev/docs/installation/windows)
+  * [Installing fonts](https://ohmyposh.dev/docs/installation/fonts)
+  * [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+* Windows Terminal
+  * [Releases](https://github.com/microsoft/terminal/releases)
