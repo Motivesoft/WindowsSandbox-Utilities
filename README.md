@@ -28,22 +28,35 @@ Examine [preference variables](https://learn.microsoft.com/en-us/powershell/modu
 
 ## Software setup
 ### Base packages
+#### VC libs
+It may be necessary to install VC libs. See [here](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/cpp/libraries/c-runtime-packages-desktop-bridge#how-to-install-and-update-desktop-framework-packages) for the latest appx links
+
+```powershell
+Invoke-WebRequest -Uri 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' -OutFile "$env:temp\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+Add-AppxPackage -Path "$env:temp\Microsoft.VCLibs.x64.14.00.Desktop.appx"
+```
+
 #### XAML
 Packages requiring XAML support require a Microsoft package to be installed. It is necessary to specify the precise version here.
 
 ```powershell
-$ProgressPreference='Silent'
 # Invoke-WebRequest -Uri 'https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx' -OutFile 'Microsoft.UI.Xaml.2.7.x64.appx'
 # Invoke-WebRequest -Uri 'https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.5/Microsoft.UI.Xaml.2.8.x64.appx' -OutFile 'Microsoft.UI.Xaml.2.8.x64.appx'
 Invoke-WebRequest -Uri 'https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx' -OutFile "$env:temp\Microsoft.UI.Xaml.2.8.x64.appx"
 
 # Add-AppxPackage Microsoft.UI.Xaml.2.7.x64.appx
 # Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
-Add-AppxPackage -Path "$env:temp\Microsoft.UI.Xaml.2.8.x64.appx" -ErrorAction SilentlyContinue | Out-Null
+Add-AppxPackage -Path "$env:temp\Microsoft.UI.Xaml.2.8.x64.appx"
 ```
 
 ### Windows Terminal
-* Requires [XAML](#xaml)
+* Requires [XAML](#xaml) to have already been installed
+* May require [VC libs](#vc-libs) to have already been installed
+
+```powershell
+Invoke-WebRequest -Uri 'https://github.com/microsoft/terminal/releases/download/v1.20.11271.0/Microsoft.WindowsTerminal_1.20.11271.0_8wekyb3d8bbwe.msixbundle' -OutFile "$env:temp\Microsoft.WindowsTerminal_1.20.msixbundle"
+Add-AppxPackage -Path "$env:temp\Microsoft.WindowsTerminal_1.20.msixbundle"
+```
 
 ### Notepad
 
