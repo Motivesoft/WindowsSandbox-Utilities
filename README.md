@@ -26,11 +26,16 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 ### Execution policies
 Script execution requires an appropriate execution policy to be set onto the machine, for example:
 ```powershell
+# Bypass security, for this process only. No 'are you sure?' prompt
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+
+# Shorthand version
 Set-ExecutionPolicy Bypass Process -Force
 ```
 or
 ```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+# For this process, allow unsigned local scripts, but require remote scripts to be signed. No 'are you sure?' prompt
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 ```
 
 ### Downloading files
