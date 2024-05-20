@@ -95,3 +95,4 @@ It seems that it must now be downloaded from the Windows Store or, if the store 
   * [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 * Windows Terminal
   * [Releases](https://github.com/microsoft/terminal/releases)
+  * [Windows Sandbox Configuration](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file)
