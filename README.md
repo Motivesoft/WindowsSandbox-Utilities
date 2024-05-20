@@ -33,6 +33,12 @@ or
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 ```
 
+### Downloading files
+A lot of the information below uses `Invoke-WebRequest` to download files from the internet. This is quite a slow process unless the progress bar is turned off first with the following command:
+```powershell
+$ProgressPreference = 'SilentlyContinue'
+```
+
 ### Scripting hints and tips
 Examine [preference variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4) for useful things to improve scripts.
 
@@ -76,6 +82,20 @@ Or:
 ./Install-DownloadablePackage.ps1 https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx
 ./Install-DownloadablePackage.ps1 https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx
 ./Install-DownloadablePackage.ps1 https://github.com/microsoft/terminal/releases/download/v1.20.11271.0/Microsoft.WindowsTerminal_1.20.11271.0_8wekyb3d8bbwe.msixbundle
+```
+
+### VS Code
+```bat
+REM Download Visual Studio Code
+curl -L "https://update.code.visualstudio.com/latest/win32-x64-user/stable" --output C:\users\WDAGUtilityAccount\Downloads\vscode.exe
+
+REM Install and run Visual Studio Code
+C:\users\WDAGUtilityAccount\Downloads\vscode.exe /verysilent /suppressmsgboxes
+```
+or
+```powershell
+Invoke-WebRequest -Uri 'https://update.code.visualstudio.com/latest/win32-x64-user/stable' -OutFile "$env:temp\vscode.exe"
+& "$env:temp\vscode.exe" /verysilent /suppressmsgboxes
 ```
 
 ### Notepad
