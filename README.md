@@ -47,12 +47,23 @@ $ProgressPreference = 'SilentlyContinue'
 ### Scripting hints and tips
 Examine [preference variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4) for useful things to improve scripts.
 
-## Software setup
-When installing the packages listed below, we can use the script file contained in this repo, for example:
+## Helper scripts
+When running scripts, the following runs from a Command Prompt and calls each script passed on the command line. It deals with powershell execution policies and so should run just fine on a clean machine:
 ```shell
-./Install-DownloadablePackage.ps1 https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx
+Execute-PSScript.cmd ./Terminal.ps1
 ```
 
+This runs from a Command Prompt and downloads and installs each package whose Url is on the command line. It deals with powershell execution policies and so should run just fine on a clean machine:
+```shell
+Install-Package.cmd https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx
+```
+
+When installing individual `appx` or `msixbundle` packages, we can use this powershell script directly, for example:
+```shell
+Install-DownloadablePackage.ps1 https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx
+```
+
+## Software packages
 ### VC libs
 It may be necessary to install VC libs. See [here](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/cpp/libraries/c-runtime-packages-desktop-bridge#how-to-install-and-update-desktop-framework-packages) for the latest appx links
 
