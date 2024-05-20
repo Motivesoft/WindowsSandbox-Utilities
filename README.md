@@ -1,4 +1,4 @@
-# WindowsSandbox-Utilities
+# Windows Sandbox Utilities
 Utilities, scripts, setup, information etc. for the Windows Sandbox
 
 ## Background
@@ -10,10 +10,10 @@ Example issues to solve:
 * Windows Terminal is not installed
 * Notepad is not installed
 
-### PowerShell
+## PowerShell
 Things reliant on the same infrastructure as the Windows Store - i.e. things that are not delivered by an 'msi' or similar installer - can often be set up using PowerShell. This requires extra effort and manually taking care of dependencies and so on, but is our best approach for this.
 
-#### Admin priviliges
+### Admin priviliges
 The Windows Sandbox opens as though the logged-on user is an administrator and so the things we try and do are running with admin rights, but the following bit of PowerShell script is useful anyway as a general practice in this sort of situation.
 
 ```powershell
@@ -23,7 +23,17 @@ if (-not([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 }
 ```
 
-#### Scripting hints and tips
+### Execution policies
+Script execution requires an appropriate execution policy to be set onto the machine, for example:
+```powershell
+Set-ExecutionPolicy Bypass Process -Force
+```
+or
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+```
+
+### Scripting hints and tips
 Examine [preference variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4) for useful things to improve scripts.
 
 ## Software setup
@@ -32,8 +42,7 @@ When installing the packages listed below, we can use the script file contained 
 ./Install-DownloadablePackage.ps1 https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx
 ```
 
-### Base packages
-#### VC libs
+### VC libs
 It may be necessary to install VC libs. See [here](https://learn.microsoft.com/en-us/troubleshoot/developer/visualstudio/cpp/libraries/c-runtime-packages-desktop-bridge#how-to-install-and-update-desktop-framework-packages) for the latest appx links
 
 ```powershell
@@ -41,7 +50,7 @@ Invoke-WebRequest -Uri 'https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx' 
 Add-AppxPackage -Path "$env:temp\Microsoft.VCLibs.x64.14.00.Desktop.appx"
 ```
 
-#### XAML
+### XAML
 Packages requiring XAML support require a Microsoft package to be installed. It is necessary to specify the precise version here.
 
 ```powershell
@@ -70,6 +79,9 @@ Or:
 ```
 
 ### Notepad
+Now this is a Store-based app, the Sandbox does not have Notepad installed by default. 
+
+It seems that it must now be downloaded from the Windows Store or, if the store is not available, the [Notepad page in the online Windows Store](https://apps.microsoft.com/detail/9msmlrh6lzf3?hl=en-gb&gl=UK) provides a __Download__ button for an installer.
 
 # Resources
 * [Installing Windows Store](https://bonguides.com/how-to-install-apps-in-microsoft-store-in-windows-sandbox/)
