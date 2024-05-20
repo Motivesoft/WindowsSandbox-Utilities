@@ -9,6 +9,9 @@ $Filename = $Url.Split("/")[-1]
 
 $DownloadedFile = "$env:temp\$Filename"
 
+# Make sure the progress bar doesn't show up - improves download time significantly
+$ProgressPreference = 'SilentlyContinue'
+
 Write-Host "Downloading: $Url"
 Invoke-WebRequest -Uri $Url -OutFile $DownloadedFile
 
