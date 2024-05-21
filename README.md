@@ -1,6 +1,12 @@
 # Windows Sandbox Utilities
 Utilities, scripts, setup, information etc. for the Windows Sandbox
 
+## TL;DR
+The info below is intended to simplify setting up a Windows Sandbox with the tools often required. The shortened version is to copy this repo's files into the Sandbox and run this script from a Command Prompt:
+```shell
+Execute-PSScript.cmd ./Terminal.ps1 ./VSCode.ps1
+```
+
 ## Background
 The Sandbox is great, but excludes some items that I typically require and this repo is meant to provide a quick and easy way to set up the Sandbox whenever we need it with the minimal of effort.
 
@@ -10,7 +16,7 @@ Example issues to solve:
 * Windows Terminal is not installed
 * Notepad is not installed
 
-## PowerShell
+## Using PowerShell
 Things reliant on the same infrastructure as the Windows Store - i.e. things that are not delivered by an 'msi' or similar installer - can often be set up using PowerShell. This requires extra effort and manually taking care of dependencies and so on, but is our best approach for this.
 
 ### Admin priviliges
@@ -47,12 +53,14 @@ $ProgressPreference = 'SilentlyContinue'
 ### Scripting hints and tips
 Examine [preference variables](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7.4) for useful things to improve scripts.
 
-## Helper scripts
+# Helper scripts
+## Run a Powershell script easily
 When running scripts, the following runs from a Command Prompt and calls each script passed on the command line. It deals with powershell execution policies and so should run just fine on a clean machine:
 ```shell
-Execute-PSScript.cmd ./Terminal.ps1
+Execute-PSScript.cmd ./Terminal.ps1 ./VSCode.ps1
 ```
 
+## Install a package easily
 This runs from a Command Prompt and downloads and installs each package whose Url is on the command line. It deals with powershell execution policies and so should run just fine on a clean machine:
 ```shell
 Install-Package.cmd https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx
